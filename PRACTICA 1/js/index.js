@@ -1,6 +1,6 @@
 function validar(){
     var nombre=document.getElementById("nombre").value;
-    nombre.trim;
+    nombre=nombre.trim();
     if (nombre==""){
         alert("introduce un nombre");
         return false;
