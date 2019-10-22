@@ -23,17 +23,17 @@ function validar(){
     }
     var contrasena1=document.getElementById("contrasena1").value;
     var contrasena2=document.getElementById("contrasena2").value;
-    contrasena1.trim;
-    contrasena2.trim;
+    contrasena1=contrasena1.trim;
+    contrasena2=contrasena2.trim;
     if(contrasena1!=contrasena2){
         alert("las contraseñas no coinciden");
         return false;
     }
-    if(contrasena1=""){
+    if(contrasena1==""){
         alert("contraseña vacia");
         return false
     }
-    if(contrasena2=""){
+    if(contrasena2==""){
         alert("contraseña vacia");
         return true
     }
