@@ -2,7 +2,7 @@
 //esCapicua
 function esCapicua($n){
     $invertido="";
-    for ($i=$n.lenght;$i>=$n;$i--){
+    for ($i=$n.lenght;$i>=$n.length;$i--){
         $invertido+=i;
     }
     if($invertido==$n){
@@ -40,5 +40,19 @@ function potencia($base,$exp){
     }
     return $total;
 }//fin potencia
+
+//posicionDeDigitos
+function posicionDeDigitos($n){
+ $ns="";
+    for ($i=$n.lenght;$i>=$n.length;$i--){
+        $un=i;
+        $ns+=i;
+        if($ns.indexOf($n)){
+            return i;
+            break;
+        }
+    }
+    
+}//fin posicionDeDigitos
 
 ?>
