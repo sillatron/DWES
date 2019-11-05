@@ -12,16 +12,14 @@ and open the template in the editor.
     <body>
         <?php
         $servidor="localhost";
-        $usuario="root";
-        $contrasena="";
+        $usuario="userdwes";
+        $contrasena="pestillo";
         $bd="Concesionario";
         $conexion= mysqli_connect($servidor,$usuario,$contrasena,$bd);
-        if(mysqli_connect_errno()){
-            echo 'No hay conexión';
-        }else{
-            echo 'Hay conexión';
+        if(mysqli_connect_errno($conexion)){
+            echo 'No se ha podido conectar con la base de datos<br>';
+            die("Error: ". mysqli_connect_error($conexion));
         }
-        
         ?>
     </body>
 </html>

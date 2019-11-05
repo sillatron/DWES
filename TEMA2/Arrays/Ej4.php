@@ -23,7 +23,7 @@ and open the template in the editor.
 
          <?php
 
-           foreach($tipo as $genero => $value)
+           foreach($tipo as $resultado => $value)
               {
 
 
@@ -32,7 +32,7 @@ and open the template in the editor.
                    <th>
                        <?php echo key($value); ?>
                  </th>
-                         <?php foreach($value as $genero=>$value)
+                         <?php foreach($value as $resultado=>$value)
                            {
                          ?>
                   <td>
