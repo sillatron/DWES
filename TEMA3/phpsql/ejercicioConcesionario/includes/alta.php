@@ -10,7 +10,7 @@
         <?php include 'navegacion.php';?>
         <main>
             <h2>Este es el alta</h2>
-            <?php if (!isset($_POST)){?>
+            <?php if (!isset($_POST[''])){?>
              <form action="alta.php" method="POST">
         <div>
         <label>Marca: </label>
@@ -40,14 +40,16 @@
         <?php
             }else{
             include 'Conexion.php';
+            $id="NULL";
             $modelo=$_POST['modelo'];
             $marca=$_POST['marca'];
             $precio=int($_POST['precio']);
             $stock=int($_POST['stock']);
-            $sql="insert into coches values(null,'$modelo','$marca',$precio,$stock)";
+            $sql="insert into coches values('$id','$modelo','$marca',$precio,$stock)";
             $conn->exec($sql);
             
         }
+        mysqli_close($conexion);
         ?>
         </main>
         
