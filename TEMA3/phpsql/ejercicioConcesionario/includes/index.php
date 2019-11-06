@@ -10,25 +10,35 @@
         <?php include 'navegacion.php';?>
         <main>
             <h2>Este es el listado de coches</h2>
-            <?php 
-        $servidor="localhost";
-        $usuario="userdwes";
-        $contrasena="pestillo";
-        $bd="Concesionario";
-        $conexion= mysqli_connect($servidor,$usuario,$contrasena,$bd);
-        if(mysqli_connect_errno($conexion)){
-            echo 'No se ha podido conectar con la base de datos<br>';
-            die("Error: ". mysqli_connect_error($conexion));
-        }
+         <?php include 'Conexion.php';?>
+            <?php
         $sql="select * from Coches";
         $consulta= mysqli_query($conexion, $sql);
-        if ($consulta){
-            
-        
-            
-       
-        }
+        if ($consulta){?>
+            <table>
+                <caption>Coches del concesionario</caption>
+                <tbody>
+                <tr><th> Identificador</th>
+                <th> Marca</th>
+                <th> Modelo</th>
+                <th> Precio</th>
+                <th> Stock</th></tr>
+        <?php
+        while ($fila=mysqli_fetch_assoc($consulta)){?>
+                <tr><td><?= $fila['id']?></td>
+                <td><?= $fila['marca']?></td>
+                <td><?= $fila['modelo']?></td>
+                <td><?= $fila['precio']?></td>
+                <td><?= $fila['stock']?></td></tr>
+                <?php
+                }
+                }else{
+                echo '0 Registros';}
+                mysqli_close($conexion);
+
+                        
             ?>
+            </table>
         </main>
         <?php include 'footer.php';?>
         

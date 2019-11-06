@@ -1,3 +1,20 @@
 ul li{
     list-style-type: none;
 }
+table{
+    border: solid 1px black;
+    border-collapse: collapse;
+}
+td{
+  border: solid 1px black;
+  border-collapse: collapse;  
+}
+th{
+    border: solid 1px black;
+    border-collapse: collapse;
+}
+div{
+    width:100px;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
