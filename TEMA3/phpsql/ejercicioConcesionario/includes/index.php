@@ -22,14 +22,19 @@
                 <th> Marca</th>
                 <th> Modelo</th>
                 <th> Precio</th>
-                <th> Stock</th></tr>
+                <th> Stock</th>
+                <th> Modificar</th>
+                <th> Borrar</th></tr>
         <?php
         while ($fila=mysqli_fetch_assoc($consulta)){?>
                 <tr><td><?= $fila['id']?></td>
                 <td><?= $fila['marca']?></td>
                 <td><?= $fila['modelo']?></td>
                 <td><?= $fila['precio']?></td>
-                <td><?= $fila['stock']?></td></tr>
+                <td><?= $fila['stock']?></td>
+                <td><a  href="modificar.php?id=<?=$fila['id']?>"><img src="lapiz.jpg"></a></td>
+                <td><a  href="borrar.php?id=<?=$fila['id']?>"><img src="papelera.png"></a></td>
+            </tr>
                 <?php
                 }
                 }else{
