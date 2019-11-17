@@ -29,6 +29,7 @@
             
             ?>
             <form action="modificar.php" method="POST">
+                 <input type="text" hidden="true" value=<?= $identif ?> name="iden">
                 <div>
                     <label>Marca: </label>
                     <input type="text" name="marca" maxlength="50" value=<?= $fila['marca']?>>
@@ -53,14 +54,15 @@
             <?php
             
             }else{
-                $id = (int)$_GET['id'];
+                $identif =(int)$_POST['iden'];
                 $marca=$_POST['marca'];
                 $modelo=$_POST['modelo'];
                 $precio=(int)$_POST['precio'];
                 $stock=(int)$_POST['stock'];
-                $sSQL="Update Coches Set marca='$marca', modelo='$modelo', precio=$precio, stock=$stock where id=$id";
+                $sSQL="Update Coches Set marca='$marca', modelo='$modelo', precio=$precio, stock=$stock where id=$identif";
                 $modificar= mysqli_query($conexion, $sSQL);
                 header("Location: index.php");
+                mysqli_close($conexion);
             }
         ?>
         </main>
