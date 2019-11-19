@@ -6,8 +6,12 @@
         <link rel="stylesheet" type="text/css" href="../CSS/estilos.css">
     </head>
     <body>
-        <?php include 'header.php';?>
-        <?php include 'navegacion.php';?>
+        <?php
+        session_start();
+        if(!isset($_SESSION['usuario'])) include 'principal.php';
+        else{
+        include 'header.php';
+        include 'navegacion.php';?>
         <main>
             <h2>Este es el listado de coches</h2>
          <?php include 'Conexion.php';?>
@@ -45,7 +49,8 @@
             ?>
             </table>
         </main>
-        <?php include 'footer.php';?>
+        <?php include 'footer.php';
+        }?>
         
     </body>
 </html>
