@@ -1,0 +1,28 @@
+main{
+    display:flex;
+    flex-direction: row;
+}
+aside{
+    background-color: paleturquoise;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.login{
+    display: flex;
+}
+.registro{
+    display: flex;
+}
+#formularios{
+    display: flex;
+    flex-direction: column;
+}
+.contenido{
+    display: flex;
+    width: 70%;
+    margin-right: 20%;
+}
+
+
+

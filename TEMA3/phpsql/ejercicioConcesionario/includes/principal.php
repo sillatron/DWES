@@ -101,13 +101,13 @@
             if(isset($_POST['login'])){
                 $email = $_POST['email'];
                 $pass = $_POST['password'];
-                $sql = "select nombre from Usuarios where Email='$email' and Pasword='$pass'";
+                $sql = "select Nombre from Usuarios where Email='$email' and Pasword='$pass'";
                 $consulta = mysqli_query($conexion, $sql);
                 if($consulta){
                     session_start();
                     $fila=mysqli_fetch_assoc($consulta);
-                    $_SESSION['usuario'] = $fila['nombre'];
-                    header("Location: index.php");
+                    $_SESSION['usuario'] = $fila['Nombre'];
+                    header("Location: prnicipal.php");
                 }
                 else{
                     echo 'Menudos programadores mas patatas';
