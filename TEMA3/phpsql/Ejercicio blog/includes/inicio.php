@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <?php session_start(); ?>
+    <?php if (!isset($_SESSION)) session_start(); ?>
     <head>
         
         <meta charset="UTF-8">
@@ -10,7 +10,9 @@
     </head>
     <body>
         
-        <?php include 'header.php';?>
+        <?php include 'header.php';
+        include 'menu.php';
+        ?>
         <main>
             <div class="contenido">
                 <p>En construcción</p>
@@ -34,13 +36,6 @@
  
 
                 </div>
-                <?php
-                    if(isset($_POST['salir'])){
-                        include 'salir.php';
-                        
-                    }
-                ?>
-
             </div>
         </aside>
            

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <?php session_start(); ?>
+    <?php if (!isset($_SESSION)) session_start(); ?>
     <head>
         <meta charset="UTF-8">
         <title>Concesionario</title>

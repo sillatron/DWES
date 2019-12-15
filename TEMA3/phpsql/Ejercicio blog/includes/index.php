@@ -8,9 +8,11 @@
     </head>
     <body>
         
-        <?php include 'header.php';?>
+        <?php if (!isset($_SESSION)) session_start();
+        else header("Location: inicio.php");
+        
+        include 'header.php';?>
         <main>
-            <?= $_SESSION['usuario'] ?>
             <div class="contenido">
                 <p>En construcción</p>
             </div>
@@ -21,7 +23,7 @@
                         <h2>Buscar</h2>
                         <input type="text" name="buscar">
                     </div>
-
+                    
                     <div>
                         <input type="submit" name="buscador" value="Buscar">
                     </div>
@@ -96,7 +98,8 @@
                 if(count($errores)==0){
                     $sql = "insert into usuarios values(null,'$nombre','$apellidos','$email','$segura', curdate())";
                     mysqli_query($conexion, $sql);
-                    $_SESSION['usuario'] = $nombre;
+                    $_SESSION['usuario']['nombre'] = $nombre;
+                    $_SESSION['usuario']['email'] = $email;
                     echo $_SESSION['usuario'];
                     header("Location: index.php");
                 
@@ -117,9 +120,9 @@
                 
                 if($fila && $verify){
                     session_start();
-                    $fila=mysqli_fetch_assoc($consulta);
                     var_dump($fila);
-                    $_SESSION['usuario'] = $fila['nombre'];
+                    $_SESSION['usuario']['nombre'] = $fila['nombre'];
+                    $_SESSION['usuario']['email'] = $fila['email'];
                     header("Location: inicio.php");
                 }
                 else{

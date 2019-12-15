@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <?php session_start(); ?>
+    <?php if (!isset($_SESSION)) session_start(); ?>
     <head>
         
         <meta charset="UTF-8">
@@ -13,7 +13,7 @@
         <?php include 'header.php';?>
         <main>
             <div class="contenido">
-                <form action="categoria" method="POST">
+                <form action="categoria.php" method="POST">
                     <div>
                         <label>Titulo</label>
                         <input type="text" name="titulo">
@@ -41,33 +41,25 @@
 
                 </div>
                 <?php
-                session_start();
-                $errores=[];
-                    if(isset($_POST['salir'])){
-                        include 'salir.php';
-                        
-                    }elseif (isset ($_POST['guardar'])) {
-                        $titulo = $_POST['titulo'];
-                        if(empty($pass)){
-                            $errores["titulo"]="el titulo no es válido";
-                        } else {
-                            $titulo = $_POST['titulo'];
-                            if(count($errores)==0){
-                                $sql = "insert into categorias values(null,'$titulo')";
-                                mysqli_query($conexion, $sql);
-                                $_SESSION['usuario'] = $nombre;
-                                echo $_SESSION['usuario'];
-                                header("Location: index.php");
-
-                            }else{
-                                foreach($errores as $error){
-                                    ?> <p><?= $error.'<br>' ?></p>
-                                <?php }
+                if (isset ($_POST['guardar'])) {
+                    $errores=[];
+                    include 'conexion.php';
+                    $titulo = $_POST['titulo'];
+                    if(empty($titulo)){
+                        $errores["titulo"]="el titulo no es válido";
+                    }else {
+                        if(!isset($errores['titulo'])){
+                            $sql = "insert into categorias values(null,'$titulo')";
+                            $hayConsulta = mysqli_query($conexion, $sql);
+                            if($hayConsulta){
+                                header("Location: inicio.php");
+                            }else {
+                                echo 'No se ha podido crear la categoria';
                             }
-                
+
                         }
-    
                     }
+                }
                 ?>
 
             </div>

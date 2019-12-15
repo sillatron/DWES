@@ -3,7 +3,7 @@
     if(isset($_POST['cerrar'])){
         include 'salir.php';
     }
-    session_start();
+    if (!isset($_SESSION)) session_start();
 ?>
 <html>
     <head>
@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="../css/index.css">
     </head>
     <body>
-        <h3>Bienvenido, <?= $_SESSION['usuario'] ?></h3>
+        <h3>Bienvenido, <?= $_SESSION['usuario']['nombre'] ?></h3>
         <form method="POST" action="lateral.php">
             <input type="submit" name="creare" value="Crear entrada">
             <input type="submit" name="crearc" value="Crear categoria">
@@ -21,3 +21,14 @@
         </form> 
     </body>
 </html>
+
+
+<?php
+if(isset($_POST['cerrar'])) include 'salir.php';
+elseif (isset($_POST['crearc'])){
+    header("Location: categoria.php");
+}
+elseif(isset ($_POST['creare'])){
+    header("Location: entrada.php");
+}
+?>

@@ -1,9 +1,15 @@
 <nav>
     <ul>
-        <li><a href="index.php">Inicio</a></li>
-        <li><a  href="alta.php">Insertar coche</a></li>
-        <li><a href="listado_clientes.php">listado de clientes</a></li>
-        <li><a  href="salir.php">Cerrar sesion</a></li>
+        <li><a href="inicio.php">Inicio</a></li>
+        <?php
+        include 'conexion.php';
+        $sql = "select nombre from categorias";
+        $consulta = mysqli_query($conexion, $sql);
+        while($fila= mysqli_fetch_assoc($consulta)){ ?>
+        <li><a href="#"><?= $fila['nombre']?></a></li>
+        <?php }
+        ?>
+        
         
     </ul>
 </nav>
