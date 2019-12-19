@@ -53,5 +53,17 @@ aside{
     margin-right: 20%;
 }
 
-
+/*TABLAS*/
+table{
+    border: solid 1px black;
+    border-collapse: collapse;
+}
+td{
+  border: solid 1px black;
+  border-collapse: collapse;  
+}
+th{
+    border: solid 1px black;
+    border-collapse: collapse;
+} 
 

@@ -24,11 +24,14 @@
 
 
 <?php
-if(isset($_POST['cerrar'])) include 'salir.php';
-elseif (isset($_POST['crearc'])){
+if(isset($_POST['cerrar'])){ 
+    include 'salir.php';
+}elseif (isset($_POST['crearc'])){
     header("Location: categoria.php");
 }
 elseif(isset ($_POST['creare'])){
     header("Location: entrada.php");
+}elseif (isset ($_POST['datos'])) {
+   header("Location: datos.php");  
 }
 ?>

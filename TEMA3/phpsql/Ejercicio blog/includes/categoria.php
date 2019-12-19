@@ -10,7 +10,8 @@
     </head>
     <body>
         
-        <?php include 'header.php';?>
+        <?php include 'header.php';
+        include 'menu.php';?>
         <main>
             <div class="contenido">
                 <form action="categoria.php" method="POST">
