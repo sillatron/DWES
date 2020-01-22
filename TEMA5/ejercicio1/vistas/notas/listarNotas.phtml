@@ -1,0 +1,8 @@
+<h1>Notas de todos los usuarios</h1>
+<?php
+while($nota=$todas->fetchObject()){
+    echo "<h3>".$nota->nombre." ".$nota->apellidos
+         ."<h5>".$nota->titulo."</h5>"
+         ."<p>".$nota->descripcion." | ".$nota->fecha."</p>";
+}
+?>

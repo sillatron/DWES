@@ -1,0 +1,6 @@
+<?php
+while($nota=$notasUsuario->fetchObject()){
+    echo "<h4>".$nota->titulo."</h4>"
+         ."<p>".$nota->descripcion." | ".$nota->fecha."</p>";
+}
+?>
