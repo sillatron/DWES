@@ -1,0 +1,12 @@
+
+<?php
+echo "<a href=index.php?c=Pizza&&a=NuevaOferta>Añadir oferta</a>";
+while($pizza=$pizzas->fetchObject()){
+    
+    echo "<h1>".$pizza->titulo."</h1>"
+         ."<img src=imgPizzas/".$pizza->imagen." alt='Imagen de oferta'>"
+         ."<p>".$pizza->descripcion."</p>"
+         ."<p><a href=index.php?c=Pizza&&a=delete&&id={$pizza->id}>Borrar</a></p>"
+         ."<p><a href=index.php?c=Pizza&&a=NuevaOferta&&id={$pizza->id}>Editar</a></p>";
+}
+?>

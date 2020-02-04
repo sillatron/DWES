@@ -40,37 +40,17 @@ class PizzaController {
                     if($titulo && $filename && $descripcion){
                         $oferta = new PizzaModel($titulo, $filename, $descripcion);
                         $oferta->save();
-                        header("Location: index.php");
+                        header("location: index.php");
                     }
-                    
                 }
-            }
-            if(isset($_GET['id'])){
+            }else{
                 $id = $_GET['id'];
-                $actualiza_oferta = new PizzaModel();
-                $actualiza_oferta->setId($id);
-                $actualiza_oferta->setTitulo($titulo);
-                $actualiza_oferta->setDescripcion($descripcion);
-                $fila = $actualiza_oferta->get_one();
-                $imagen_antigua = $fila->imagen;
-                if(isset($_FILES['imagen'])){
-                    $imagen_antigua = $_FILES['imagen']['name'];
-                }
-                var_dump($imagen_antigua);
-                var_dump($actualiza_oferta);
-                $actualiza_oferta->setImagen($imagen_antigua);
-                $actualiza_oferta->update();
+                $imagen = $actualizar->get_one()->imagen;
+                $actualizar->setId($id);
+                $actualizar = new PizzaModel($titulo, $imagen, $descripcion);
+                $actualizar->update();
+                header("Location:index.php");
             }
-            //header("location: index.php");
         }
     }
-    
-    public function delete(){
-        $id = $_GET['id'];
-        $pizza = new PizzaModel();
-        $pizza->setId($id);
-        $borrar=$pizza->delete();
-        header("Location:index.php");
-    }
 }
-

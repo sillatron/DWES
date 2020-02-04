@@ -8,12 +8,19 @@
         <textarea name="descripcion" required></textarea>
     </div>
     <div class="campoForm">
-        <label for="select">Selecciona el usuario</label>
-        <select name="idU">
-            <option value="0">Seleccione...</option>
-            <?php while($usuario=$todos->fetchObject()){ ?>
-            <option value="<?= $usuario->id?>"><?= $usuario->nombre?></option>
-            <?php }?>
+        
+        
+            <?php
+            if(isset($_GET['idU'])){ ?>
+        <input type="text" name="idU" value="<?= $_GET['idU'] ?>" hidden="true">
+            <?php }else{ ?>
+            <label for="select">Selecciona el usuario</label>
+            <select name="idU">
+                <option value="0">Seleccione...</option>
+                <?php while($usuario=$todos->fetchObject()){ ?>
+                <option value="<?= $usuario->id?>"><?= $usuario->nombre?></option>
+                <?php } }?>
+            
         </select>
     </div>
     <input type="submit" value="Crear nota" name="altaNota">

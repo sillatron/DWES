@@ -13,6 +13,7 @@ class NotasController{
             $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : false;
             $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
             $idU = isset($_POST['idU']) ? $_POST['idU'] : false;
+            var_dump($idU);
             
             if($titulo && $descripcion && $idU != "0"){
                 $nota = new NotasModels($titulo, $descripcion);

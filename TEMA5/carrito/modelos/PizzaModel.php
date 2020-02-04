@@ -69,7 +69,4 @@ class PizzaModel extends DataBase{
     public function update(){
         $this->conn->exec("update oferta set titulo = '{$this->getTitulo()}', imagen = '{$this->getImagen()}', descripcion = '{$this->getDescripcion()}' where id = {$this->getId()}");
     }
-    public function delete(){
-        return $this->conn->query("delete from oferta where id={$this->getId()}");
-    }
 }

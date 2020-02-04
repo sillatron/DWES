@@ -1,0 +1,18 @@
+<form method="post" enctype="multipart/form-data">
+    <div>
+        <label for="titulo">Titulo</label>
+        <input type="text" name="titulo" <?php if (isset($_GET['id'])){ ?> value="<?php echo $of->titulo; }?>">
+    </div>
+    <div>
+        <label for="imagen">Imagen</label>
+        <input type="file" name="imagen">
+        <?php if(isset($_GET['id'])){ 
+        echo "<img src=imgPizzas/".$of->imagen." alt='Imagen seleccionada'>";
+        } ?>
+    </div>
+    <div>
+        <label for="descripcion">Descripción</label>
+        <input type="text" name="descripcion" <?php if (isset($_GET['id'])){ ?> value="<?php echo $of->descripcion; }?>">
+    </div>
+    <input type="submit" value="Subir" name="nOferta">
+</form>

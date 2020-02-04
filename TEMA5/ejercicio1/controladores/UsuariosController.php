@@ -31,7 +31,7 @@ class UsuariosController{
     }
     
     public function remove(){
-        $id = $_GET['id'];
+        $id = $_GET['idU'];
         $usuario = new usuariosModels();
         $usuario->setId($id);
         $borrar=$usuario->delete();
