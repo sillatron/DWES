@@ -15,7 +15,7 @@ class PizzaController {
             if(isset($_GET['id'])){
                 $oferta = new PizzaModel();
                 $oferta->setId($_GET['id']);
-                $of = $oferta->get_one();
+                $of = $oferta->get_one()->fetchObject();
             }
             require_once 'vistas/nuevaOferta.phtml';
             
@@ -23,8 +23,10 @@ class PizzaController {
         }else{
             $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : false;
             $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
+            $noImagen = true;
             
             if(isset($_FILES['imagen'])){
+                $noImagen = false;
                 $extensiones = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
                 $file = $_FILES['imagen'];
                 $filename = $file['name'];
@@ -36,14 +38,8 @@ class PizzaController {
                         mkdir($directorio, 0777, true);
                     }
                     move_uploaded_file($file['tmp_name'], $directorio.'/'.$filename);
-
-                    if($titulo && $filename && $descripcion){
-                        $oferta = new PizzaModel($titulo, $filename, $descripcion);
-                        $oferta->save();
-                        header("Location: index.php");
-                    }
-                    
                 }
+                $_FILES['imagen'] = null;
             }
             if(isset($_GET['id'])){
                 $id = $_GET['id'];
@@ -51,17 +47,19 @@ class PizzaController {
                 $actualiza_oferta->setId($id);
                 $actualiza_oferta->setTitulo($titulo);
                 $actualiza_oferta->setDescripcion($descripcion);
-                $fila = $actualiza_oferta->get_one();
-                $imagen_antigua = $fila->imagen;
-                if(isset($_FILES['imagen'])){
-                    $imagen_antigua = $_FILES['imagen']['name'];
+                if($noImagen){
+                    $consulta = $actualiza_oferta->get_one()->fetchObject();
+                    $filename = $consulta->imagen;
                 }
-                var_dump($imagen_antigua);
-                var_dump($actualiza_oferta);
-                $actualiza_oferta->setImagen($imagen_antigua);
+                $actualiza_oferta->setImagen($filename);
                 $actualiza_oferta->update();
+            }else{
+                
+                $filename = empty($filename) ?  'default.png' : $filename;
+                $oferta = new PizzaModel($titulo, $filename, $descripcion);
+                $oferta->save();
             }
-            //header("location: index.php");
+            header("location: index.php");
         }
     }
     

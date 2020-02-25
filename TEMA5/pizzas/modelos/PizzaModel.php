@@ -62,8 +62,7 @@ class PizzaModel extends DataBase{
     
     public function get_one(){
         $consulta = $this->conn->query("select * from oferta where id = {$this->getId()}");
-        $fila = $consulta->fetchObject();
-        return $fila;
+        return $consulta;
     }
     
     public function update(){
